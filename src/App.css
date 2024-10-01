@@ -3,6 +3,7 @@
 }
 
 body {
+  text-align: center;
   font-family: Arial;
   margin: 0;
   display: flex;
@@ -13,17 +14,20 @@ body {
 .header {
 padding: 5px;
 text-align: center;
-background-color: #282c34;
+background-color: #333333;
 color: white;
 font-size: 20px;
 }
 
-.login-button {
-  text-align: center;
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  justify-content: center;
 }
 
-.signup-button {
-  text-align: center;
+nav ul li {
+  margin-right: 20px;
 }
 
 table {
@@ -52,10 +56,14 @@ caption {
 }
 
 footer {
-  text-align: center;
-  background-color: #333333;
-  color: white;
-  padding: 10px;
+  background-color: #333333; /* Dark background for contrast */
+  color: white; /* Text color for contrast */
+  text-align: center; /* Center-align text */
+  padding: 5px 0; /* Space inside the footer */
+  font-size: 12px; /* Slightly smaller font size */
+  position: fixed; /* Keeps the footer at the bottom */
+  bottom: 0; /* Sticks to the bottom */
+  width: 100%; /* Stretches footer across the screen */
 }
 
 

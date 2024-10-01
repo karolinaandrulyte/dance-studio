@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
+import SignUp from './SignUp';
+import LogIn from './LogIn';
+import Contacts from "./pages/Contacts";
 import NoPage from "./pages/NoPage";
 
 function Navigation() {
@@ -12,13 +14,15 @@ function Navigation() {
   return (
 
     <BrowserRouter>
-        <Routes>
+        <Routes> {/* links to .js filenames */}
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<LogIn />} />
+            <Route path="contacts" element={<Contacts />} />
             <Route path="*" element={<NoPage />} />
           </Route>
-          </Routes>
+        </Routes>
     </BrowserRouter>
 
   );

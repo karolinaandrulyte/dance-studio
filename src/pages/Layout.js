@@ -1,18 +1,22 @@
+import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 
 const Layout = () => {
   return (
     <>
       <nav>
-        <ul>
+        <ul>  {/*section names visible in website*/}
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/blogs">Blogs</Link>
+            <Link to="/signup">Sign up</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/login">Log in</Link>
+          </li>
+          <li>
+            <Link to="/contacts">Contacts</Link>
           </li>
         </ul>
       </nav>
