@@ -13,18 +13,6 @@ function App() {
     
     <Header />
     <Navigation />
-    
-    <body>
-
-    <p>About the school</p>
-
-    <p>Sign up here!</p>
-    
-
-    </body>
-    
-      
-
     <Footer />
 
     </>

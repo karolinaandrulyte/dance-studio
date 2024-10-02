@@ -9,12 +9,10 @@ import NoPage from "./pages/NoPage";
 
 function Navigation() {
 
-  
-
   return (
 
     <BrowserRouter>
-        <Routes> {/* links to .js filenames */}
+        <Routes> {/* links to .js components */}
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="signup" element={<SignUp />} />
