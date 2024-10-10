@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function StudentForm( {addStudent} ) {
+function SignUpForm( {addStudent} ) {
     const [formData, setFormData] = useState( {
         firstName: "",
         lastName: "",
@@ -33,6 +33,26 @@ function StudentForm( {addStudent} ) {
     return ( <>
         <form onSubmit={handleSubmit}>
             <div>
+                <label htmlFor="username">Username:</label>
+                <textarea
+                    id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    placeholder="Enter your username"
+                />
+            </div>            
+            <div>
+                <label htmlFor="email">E-mail address:</label>
+                <textarea
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Enter your e-mail address"
+                />
+            </div>
+            <div>
                 <label htmlFor="firstName">First name:</label>
                 <input
                     type="text"
@@ -55,22 +75,23 @@ function StudentForm( {addStudent} ) {
                 />
             </div>
             <div>
-                <label htmlFor="email">E-mail address:</label>
-                <textarea
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="text"
+                    id="password"
+                    name="password"
+                    value={formData.password}
                     onChange={handleInputChange}
-                    placeholder="Enter your e-mail address"
+                    placeholder="Create your password"
                 />
             </div>
             <button type="submit">Submit form</button>
         </form>
 
         {/* Show the success message if the form was submitted */}
-        {isSubmitted && <p className="success-message">Thank you. Form submitted successfully.<br/>We will contact you!</p>}
+        {isSubmitted && <p className="success-message">Thank you. Form submitted successfully.<br/>Welcome to our dance family!</p>}
     </>
     );
 }
 
-export default StudentForm;
+export default SignUpForm;

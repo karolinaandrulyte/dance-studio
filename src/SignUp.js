@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import StudentForm from './StudentForm';
+import SignUpForm from './SignUpForm';
 
 const SignUp = () => {
     const [students, setStudents] = useState([]);
@@ -30,9 +30,9 @@ const SignUp = () => {
         );
     };
 
-    return <><h1>Sign up form for new students:</h1>
+    return <><h2>Registration form for teachers and students:</h2>
     
-    <StudentForm addStudent={addStudent}/>
+    <SignUpForm addStudent={addStudent}/>
     
     </>
 };

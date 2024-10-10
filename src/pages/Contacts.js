@@ -32,20 +32,12 @@ const Contacts = () => {
     <div className="contact-container">
     
     <p>
-      We would love to hear from you! Please fill out the form below or reach us at the contact information provided.
+      We would love to hear from you!
+      <br></br>
+      Please fill out the form below or reach us at the contact information provided.
     </p>
-    <div className="contact-info">
-      <h2>Our Contact Information:</h2>
-      <p>
-        <strong>Dance Studio Name</strong><br />
-        123 Dance Street<br />
-        Dance City, DC 12345<br />
-        Email: info@dancestudio.com<br />
-        Phone: (123) 456-7890
-      </p>
-    </div>
-
-    <h2>Contact Form</h2>
+    
+    <h3>Contact Form</h3>
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Name:</label>
@@ -81,6 +73,17 @@ const Contacts = () => {
       </div>
       <button type="submit">Send Message</button>
     </form>
+
+    <div className="contact-info">
+      <p>
+        <strong>Dance Studio</strong><br />
+        123 Dance Street<br />
+        Dance City, DC 12345<br />
+        Email: info@dancestudio.com<br />
+        Phone: (123) 456-7890
+      </p>
+    </div>
+
   </div>
   );  
 };
