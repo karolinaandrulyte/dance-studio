@@ -1,28 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import SignUp from './SignUp';
-import LogIn from './LogIn';
-import Contacts from "./pages/Contacts";
-import NoPage from "./pages/NoPage";
+import { Link } from "react-router-dom";
+
 
 function Navigation() {
 
   return (
-
-    <BrowserRouter>
-        <Routes> {/* links to .js components */}
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="login" element={<LogIn />} />
-            <Route path="contacts" element={<Contacts />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-    </BrowserRouter>
-
+    <nav>
+      <ul>  {/* section names visible in website */}
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/signup">Sign up</Link>
+        </li>
+        <li>
+          <Link to="/login">Log in</Link>
+        </li>
+        <li>
+          <Link to="/contacts">Contacts</Link>
+        </li>
+      </ul>
+    </nav>
   );
 
 }

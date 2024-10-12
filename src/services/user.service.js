@@ -12,9 +12,7 @@ const getPublicContent = () => {
   };
 
   const getTeacherBoard = () => {
-
-    //localhost:8080/api/test/teacher
-    return axios.get(API_URL + "teacher", { headers: authHeader() });
+    return axios.get(API_URL + "teacher", { headers: authHeader() }); //localhost:8080/api/test/teacher
   };
 
   const getAdminBoard = () => {

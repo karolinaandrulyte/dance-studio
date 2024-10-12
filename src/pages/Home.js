@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     
   return ( 
+    
     <div className='home-container'>
      <h1>About us</h1>
      <p>Step into the rhythm of life at our dance studio, where movement meets passion. 
