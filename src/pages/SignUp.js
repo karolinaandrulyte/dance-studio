@@ -55,6 +55,7 @@ const SignUp = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
+  const [isTeacher, setIsTeacher] = useState(false);
   const [successful, setSuccessful] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -92,7 +93,7 @@ const SignUp = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, firstName, lastName, password).then(
+      AuthService.register(username, email, firstName, lastName, password, isTeacher ? 'ROLE_TEACHER' : 'ROLE_STUDENT').then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -115,7 +116,7 @@ const SignUp = () => {
     return (
       <div className="col-md-12">
       <div className="card card-container">
-
+      <h2>Sign up form for teachers and students:</h2>
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
@@ -177,6 +178,17 @@ const SignUp = () => {
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
                 />
+              </div>
+
+              <div className="form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={isTeacher}
+                    onChange={(e) => setIsTeacher(e.target.checked)}
+                  />
+                  Register as Teacher
+                </label>
               </div>
 
               <div className="form-group">

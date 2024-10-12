@@ -1,26 +1,61 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-
-function Navigation() {
+const Navigation = ({ currentUser, showAdminBoard, showTeacherBoard, showStudentBoard, logOut }) => {
 
   return (
-    <nav>
-      <ul>  {/* section names visible in website */}
+    <nav className="navbar">
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/contacts">Contacts</Link>
+      </li>
+      
+      {/* Only show if admin is logged in */}
+      {showAdminBoard && (
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/admin">Admin Board</Link>
         </li>
+      )}
+
+      {/* Only show if teacher is logged in */}
+      {showTeacherBoard && (
         <li>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/teacher">Teacher Board</Link>
         </li>
+      )}
+
+      {/* Only show if student is logged in */}
+      {showStudentBoard && (
         <li>
-          <Link to="/login">Log in</Link>
+          <Link to="/student">Student Board</Link>
         </li>
-        <li>
-          <Link to="/contacts">Contacts</Link>
-        </li>
-      </ul>
-    </nav>
+      )}
+
+      {/* Show these if user is logged in */}
+      {currentUser ? (
+        <>
+          <li>
+            <Link to="/profile">{currentUser.username}'s Profile</Link>
+          </li>
+          <li>
+            <a href="/login" onClick={logOut}>LogOut</a>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Log In</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+        </>
+      )}
+    </ul>
+  </nav>
   );
 
 }
