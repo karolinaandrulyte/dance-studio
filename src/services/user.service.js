@@ -8,7 +8,11 @@ const getPublicContent = () => {
   };
 
   const getStudentBoard = () => {
-    return axios.get(API_URL + "student", { headers: authHeader() });
+    return axios.get(API_URL + "student", { headers: authHeader() })
+    .catch(error => {
+      console.error("Error fetching student board:", error);
+      // You can add further actions, like updating the state to show the error in the UI
+    });
   };
 
   const getTeacherBoard = () => {
