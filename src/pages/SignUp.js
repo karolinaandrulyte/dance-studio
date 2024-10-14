@@ -83,6 +83,7 @@ const SignUp = () => {
     const password = e.target.value;
      setPassword(password);
   };
+  
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -93,7 +94,7 @@ const SignUp = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, firstName, lastName, password, isTeacher ? 'ROLE_TEACHER' : 'ROLE_STUDENT').then(
+      AuthService.register(username, email, firstName, lastName, password, isTeacher).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
