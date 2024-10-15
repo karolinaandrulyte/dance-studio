@@ -11,7 +11,6 @@ const getPublicContent = () => {
     return axios.get(API_URL + "student", { headers: authHeader() })
     .catch(error => {
       console.error("Error fetching student board:", error);
-      // You can add further actions, like updating the state to show the error in the UI
     });
   };
 
@@ -20,7 +19,15 @@ const getPublicContent = () => {
   };
 
   const getAdminBoard = () => {
-    return axios.get(API_URL + "admin", { headers: authHeader() });
+  return axios.get(API_URL + "admin", { headers: authHeader() }); // Ensure authHeader is included
+};
+
+  const getTeachers = () => {
+    return axios.get("http://localhost:8080/api/users/teachers", { headers: authHeader() }); // Include authHeader
+  };
+  
+  const getStudents = () => {
+    return axios.get("http://localhost:8080/api/users/students", { headers: authHeader() }); // Include authHeader
   };
 
 const UserService = {
@@ -28,6 +35,8 @@ const UserService = {
   getStudentBoard,
   getTeacherBoard,
   getAdminBoard,
+  getTeachers,
+  getStudents, 
 };
 
 export default UserService;
