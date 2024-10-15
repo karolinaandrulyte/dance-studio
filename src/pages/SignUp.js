@@ -87,14 +87,24 @@ const SignUp = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
+  
     setMessage("");
     setSuccessful(false);
-
+  
     form.current.validateAll();
-
+  
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, firstName, lastName, password, isTeacher).then(
+      // Create an object that matches the SignupRequest structure
+      const signupData = {
+        username,
+        email,
+        firstName,
+        lastName,
+        password,
+        isTeacher // Send the boolean directly
+      };
+  
+      AuthService.register(signupData).then(
         (response) => {
           setMessage(response.data.message);
           setSuccessful(true);
@@ -106,7 +116,7 @@ const SignUp = () => {
               error.response.data.message) ||
             error.message ||
             error.toString();
-
+  
           setMessage(resMessage);
           setSuccessful(false);
         }
@@ -186,7 +196,10 @@ const SignUp = () => {
                   <input
                     type="checkbox"
                     checked={isTeacher}
-                    onChange={(e) => setIsTeacher(e.target.checked)}
+                    onChange={(e) => {
+                        setIsTeacher(e.target.checked);
+                        console.log("isTeacher:", e.target.checked); // Log the value
+                    }}
                   />
                   Register as Teacher
                 </label>
