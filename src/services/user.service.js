@@ -30,6 +30,15 @@ const getPublicContent = () => {
     return axios.get("http://localhost:8080/api/users/students", { headers: authHeader() }); // Include authHeader
   };
 
+  const assignStudent = (studentId, teacherId) => {
+    console.log("Assigning student:", studentId, "to teacher:", teacherId);
+    return axios.put(`http://localhost:8080/api/users/students/${studentId}/assign/${teacherId}`, {}, { headers: authHeader() });
+};
+
+const getAssignedStudents = (teacherId) => {
+  return axios.get(`http://localhost:8080/api/users/teachers/${teacherId}/students`, { headers: authHeader() });
+};
+
 const UserService = {
   getPublicContent,
   getStudentBoard,
@@ -37,6 +46,8 @@ const UserService = {
   getAdminBoard,
   getTeachers,
   getStudents, 
+  assignStudent,
+  getAssignedStudents,
 };
 
 export default UserService;

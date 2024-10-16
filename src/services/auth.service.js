@@ -31,7 +31,7 @@ const register = (signupData) => {
     localStorage.removeItem("user");
   };
 
-  const getCurrentUser = () => {
+  const getCurrentUser = () => { //retrieves the currently logged-in user's data from localStorage
     return JSON.parse(localStorage.getItem("user"));
   };
 
