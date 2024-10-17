@@ -67,6 +67,19 @@ const assignStudent = (studentId) => {
   );
 };
 
+ // Unassign a student
+ const handleUnassign = (studentId) => {
+  UserService.unassignStudent(studentId)
+    .then((response) => {
+      console.log("Unassigned student:", response.data);
+      fetchAssignedStudents(); // Refresh the assigned students
+    })
+    .catch((error) => {
+      console.log("Error unassigning student:", error);
+    });
+};
+
+
   return (
     <div className="container">
       <header className="jumbotron">
@@ -120,7 +133,7 @@ const assignStudent = (studentId) => {
                 <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Email</th>
+                <th>Actions</th> {/* Add a column for actions */}
               </tr>
             </thead>
             <tbody>
@@ -130,7 +143,14 @@ const assignStudent = (studentId) => {
                   <td>{student.username}</td>
                   <td>{student.firstName}</td>
                   <td>{student.lastName}</td>
-                  <td>{student.email}</td>
+                  <td>
+                    <button
+                      onClick={() => handleUnassign(student.id)} // Unassign button
+                      className="btn btn-warning"
+                    >
+                      Unassign
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -140,7 +160,6 @@ const assignStudent = (studentId) => {
         )}
       </div>
     </div>
-
     
   );
 };

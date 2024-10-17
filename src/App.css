@@ -31,24 +31,35 @@ nav ul li {
 }
 
 table {
-  width: 100%;
-  height: auto;
-  table-layout: fixed;
+  width: auto; /* Set width based on content */
+  max-width: 100%; /* Limit width to container */
+  margin: 20px auto; /* Center the table with some margin */
   border-collapse: collapse;
-  border: 2px solid #ffffff;
-  padding: 2px;
-  text-align: left;
-  background-color: #2a9441;
-  font-family: arial, sans-serif;
+  border: 1px solid #ccc; /* Light border around the table */
+  font-family: Arial, sans-serif;
   font-size: 14px;
-  color: #ffffff; /* font color */  
+}
+
+th, td {
+  border: 1px solid #ccc; /* Border for cells */
+  padding: 10px 15px; /* Padding inside cells */
+  text-align: left; /* Align text to the left */
+}
+
+th {
+  background-color: #f4f4f4; /* Light gray background for header */
+  font-weight: bold; /* Make header text bold */
+}
+
+td {
+  background-color: #fff; /* White background for table rows */
 }
 
 caption {
-  background-color: #2a9441;
-  font-family: arial, sans-serif;
-  font-size: 14px;
-  color: #ffffff;
+  margin-bottom: 10px; /* Space between table and caption */
+  font-size: 16px;
+  font-weight: bold;
+  color: #333; /* Darker color for caption */
 }
 
 .App-link {

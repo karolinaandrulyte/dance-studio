@@ -39,6 +39,12 @@ const getAssignedStudents = (teacherId) => {
   return axios.get(`http://localhost:8080/api/users/teachers/${teacherId}/students`, { headers: authHeader() });
 };
 
+const unassignStudent = (studentId) => {
+  return axios.put(`http://localhost:8080/api/users/students/${studentId}/unassign`, {}, {
+      headers: authHeader()
+  });
+};
+
 const UserService = {
   getPublicContent,
   getStudentBoard,
@@ -48,6 +54,7 @@ const UserService = {
   getStudents, 
   assignStudent,
   getAssignedStudents,
+  unassignStudent,
 };
 
 export default UserService;
