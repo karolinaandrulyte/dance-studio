@@ -14,6 +14,7 @@ import BoardAdmin from './pages/BoardAdmin'; // Importing your board components
 import BoardStudent from './pages/BoardStudent';
 import BoardTeacher from './pages/BoardTeacher';
 import Profile from './pages/Profile';
+import UpdateUser from "./pages/UpdateUser";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/student" element={<BoardStudent />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NoPage />} />
+        <Route path="/admin/update/:id" element={<UpdateUser />} />
       </Routes>
     </div>
     <Footer />

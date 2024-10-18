@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate  } from "react-router-dom";
 import UserService from "../services/user.service";
 
 const BoardAdmin = () => {
   const [content, setContent] = useState("");
   const [teachers, setTeachers] = useState([]); // State to store list of teachers
   const [students, setStudents] = useState([]); // State to store list of students
+  const navigate = useNavigate();
 
   useEffect(() => {
     UserService.getAdminBoard().then(
@@ -45,6 +46,21 @@ UserService.getStudents().then(
 );
 }, []);
 
+const handleDelete = (id) => {
+  UserService.deleteUser(id).then(() => {
+    // Refresh the teacher and student lists
+    setTeachers(teachers.filter((teacher) => teacher.id !== id));
+    setStudents(students.filter((student) => student.id !== id));
+  }).catch(error => {
+    console.error("Error deleting user:", error);
+  });
+};
+
+const handleUpdate = (id) => {
+  console.log("Update user with ID:", id);
+  navigate(`/admin/update/${id}`); // Make sure this matches the route path in App.js
+};
+
   return (
     <div className="container">
       <header className="jumbotron">
@@ -63,6 +79,7 @@ UserService.getStudents().then(
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Dance Style</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -74,6 +91,10 @@ UserService.getStudents().then(
                   <td>{teacher.lastName}</td>
                   <td>{teacher.email}</td>
                   <td>{teacher.danceStyle}</td>
+                  <td>
+                    <button onClick={() => handleUpdate(teacher.id)}>Update</button>
+                    <button onClick={() => handleDelete(teacher.id)}>Delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -94,6 +115,7 @@ UserService.getStudents().then(
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +126,10 @@ UserService.getStudents().then(
                   <td>{student.firstName}</td>
                   <td>{student.lastName}</td>
                   <td>{student.email}</td>
+                  <td>
+                    <button onClick={() => handleUpdate(student.id)}>Update</button>
+                    <button onClick={() => handleDelete(student.id)}>Delete</button>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -45,6 +45,23 @@ const unassignStudent = (studentId) => {
   });
 };
 
+const deleteUser = (id) => {
+  return axios.delete(`http://localhost:8080/api/users/${id}`, { headers: authHeader() });
+};
+
+const updateUser = (id, updatedUser) => {
+  return axios.put(`http://localhost:8080/api/users/${id}`, updatedUser, {
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeader()  // Include authorization header for protected endpoints
+    }
+  }).then((response) => {
+    return response.data;
+  }).catch((error) => {
+    throw new Error("Failed to update user: " + error.message);
+  });
+};
+
 const UserService = {
   getPublicContent,
   getStudentBoard,
@@ -55,6 +72,8 @@ const UserService = {
   assignStudent,
   getAssignedStudents,
   unassignStudent,
+  deleteUser, 
+  updateUser, 
 };
 
 export default UserService;
