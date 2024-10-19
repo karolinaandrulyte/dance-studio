@@ -2,36 +2,58 @@ import React, { useState, useEffect } from "react";
 import UserService from "../services/user.service";
 
 const BoardStudent = () => {
-    const [content, setContent] = useState("");
+    const [teachers, setTeachers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
   
     useEffect(() => {
-      UserService.getStudentBoard()
-      .then((response) => {
-        console.log("Full response from backend:", response); // Log the response for debugging
-        if (response && response.data) {
-            setContent(response.data); // Expecting response.data to contain the string from backend
-        } else {
-            setContent("No data found.");
+      const fetchTeachers = async () => {
+        try {
+          const response = await UserService.getTeachers();
+          setTeachers(response.data);
+        } catch (err) {
+          setError("Failed to load teachers");
+          console.error(err);
+        } finally {
+          setLoading(false);
         }
-    })
-    .catch((error) => {
-        console.error("Network error:", error);
-        const _content =
-            (error.response && error.response.data && error.response.data.message) ||
-            error.message ||
-            error.toString();
-
-        setContent(_content);
-          });
-  }, []);
+      };
+  
+      fetchTeachers();
+    }, []);
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+  
+    if (error) {
+      return <div>{error}</div>;
+    }
 
   return (
-      <div className="container">
-          <header className="jumbotron">
-              <h3>{content}</h3>
-          </header>
-      </div>
-  );
-  };
+    <div className="board-student">
+    <h2>Student Board</h2>
+    <h3>Available Teachers</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Dance Style</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {teachers.map((teacher) => (
+          <tr key={teacher.id}>
+            <td>{teacher.firstName} {teacher.lastName}</td>
+            <td>{teacher.danceStyle}</td>
+            <td>{teacher.description}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+};
   
   export default BoardStudent;
