@@ -2,6 +2,7 @@ import axios from "axios";
 import authHeader from "./auth-header";
 
 const API_URL = "http://localhost:8080/api/test/";
+const API_USERS_URL = "http://localhost:8080/api/users/"; // Base URL for user-related endpoints
 
 const getPublicContent = () => {
     return axios.get(API_URL + "all");
@@ -19,15 +20,15 @@ const getPublicContent = () => {
   };
 
   const getAdminBoard = () => {
-  return axios.get(API_URL + "admin", { headers: authHeader() }); // Ensure authHeader is included
+  return axios.get(API_URL + "admin", { headers: authHeader() }); 
 };
 
   const getTeachers = () => {
-    return axios.get("http://localhost:8080/api/users/teachers", { headers: authHeader() }); // Include authHeader
+    return axios.get("http://localhost:8080/api/users/teachers", { headers: authHeader() }); 
   };
   
   const getStudents = () => {
-    return axios.get("http://localhost:8080/api/users/students", { headers: authHeader() }); // Include authHeader
+    return axios.get("http://localhost:8080/api/users/students", { headers: authHeader() }); 
   };
 
   const assignStudent = (studentId, teacherId) => {
@@ -53,12 +54,21 @@ const updateUser = (id, updatedUser) => {
   return axios.put(`http://localhost:8080/api/users/${id}`, updatedUser, {
     headers: {
       "Content-Type": "application/json",
-      ...authHeader()  // Include authorization header for protected endpoints
+      ...authHeader()  
     }
   }).then((response) => {
     return response.data;
   }).catch((error) => {
     throw new Error("Failed to update user: " + error.message);
+  });
+};
+
+const updateProfile = (profileData) => {
+  return axios.put(API_USERS_URL + "profile/update", profileData, { 
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeader()
+    }
   });
 };
 
@@ -74,6 +84,7 @@ const UserService = {
   unassignStudent,
   deleteUser, 
   updateUser, 
+  updateProfile,
 };
 
 export default UserService;

@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthService from "../services/auth.service";
+import UserService from "../services/user.service";
 
+const Profile = () => {
+  const [currentUser] = useState(AuthService.getCurrentUser());
+  const [profileData, setProfileData] = useState({
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    danceStyle: currentUser.danceStyle || "", 
+    description: currentUser.description || "" 
+  });
 
-  const Profile = () => {
-    const currentUser = AuthService.getCurrentUser();
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setProfileData({ ...profileData, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    const { danceStyle, description } = profileData; 
+    UserService.updateProfile({ danceStyle, description })
+      .then((response) => {
+        alert("Profile updated successfully");
+
+        // Optionally update the current user in local storage
+        AuthService.updateCurrentUser({ ...currentUser, danceStyle, description });
+      })
+      .catch((error) => {
+        console.error("Failed to update profile:", error);
+      });
+  };
+
 
     return (
         <div className="container">
@@ -12,50 +41,63 @@ import AuthService from "../services/auth.service";
                 <strong>{currentUser.username}</strong> user profile
             </h3>
          </header>   
-         <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Value</th>
-          </tr>
-        </thead>
+         
+      <p>
+        <strong>Id:</strong> {currentUser.id}
+      </p>
+      <p>
+        <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)}...{" "}
+        {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
+      </p>
+
+      <table className="profile-table">
         <tbody>
           <tr>
-            <td><strong>First Name</strong></td>
-            <td>{currentUser.firstName}</td>
+            <td><strong>First Name:</strong></td>
+            <td>{currentUser.firstName}</td> {/* Read-only */}
           </tr>
           <tr>
-            <td><strong>Last Name</strong></td>
-            <td>{currentUser.lastName}</td>
+            <td><strong>Last Name:</strong></td>
+            <td>{currentUser.lastName}</td> {/* Read-only */}
           </tr>
           <tr>
-            <td><strong>Email</strong></td>
-            <td>{currentUser.email}</td>
+            <td><strong>Email:</strong></td>
+            <td>{currentUser.email}</td> {/* Read-only */}
           </tr>
-          {/* <tr>
-            <td><strong>Id</strong></td>
-            <td>{currentUser.id}</td>
-          </tr>
-          <tr>
-            <td><strong>Token</strong></td>
-            <td>
-              {currentUser.accessToken.substring(0, 20)}...{" "}
-              {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-            </td>
-          </tr> */}
-          <tr>
-            <td><strong>Authorities</strong></td>
-            <td>
-              <ul>
-                {currentUser.roles &&
-                  currentUser.roles.map((role, index) => (
-                    <li key={index}>{role}</li>
-                  ))}
-              </ul>
-            </td>
-          </tr>
+          {currentUser.roles && currentUser.roles.includes("ROLE_TEACHER") && (
+            <>
+              <tr>
+                <td><strong>Dance Style:</strong></td>
+                <td>
+                  <input
+                    type="text"
+                    name="danceStyle"
+                    value={profileData.danceStyle}
+                    onChange={handleInputChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Description:</strong></td>
+                <td>
+                  <input
+                    type="text"
+                    name="description"
+                    value={profileData.description}
+                    onChange={handleInputChange}
+                  />
+                </td>
+              </tr>
+              </>
+          )}
         </tbody>
       </table>
+
+      {currentUser.roles && currentUser.roles.includes("ROLE_TEACHER") && (
+        <button type="submit" onClick={handleSubmit}>
+          Update Profile
+        </button>
+      )}
     </div>
   );
 };
