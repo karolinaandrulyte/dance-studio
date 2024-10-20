@@ -65,30 +65,30 @@ const Profile = () => {
             <td>{currentUser.email}</td> {/* Read-only */}
           </tr>
           {currentUser.roles && currentUser.roles.includes("ROLE_TEACHER") && (
-            <>
               <tr>
-                <td><strong>Dance Style:</strong></td>
-                <td>
-                  <input
-                    type="text"
-                    name="danceStyle"
-                    value={profileData.danceStyle}
-                    onChange={handleInputChange}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Description:</strong></td>
-                <td>
-                  <input
-                    type="text"
-                    name="description"
-                    value={profileData.description}
-                    onChange={handleInputChange}
-                  />
-                </td>
-              </tr>
-              </>
+              <td><strong>Dance Style:</strong></td>
+              <td>
+                <input
+                  type="text"
+                  name="danceStyle"
+                  value={profileData.danceStyle}
+                  onChange={handleInputChange}
+                />
+              </td>
+            </tr>
+          )}
+          {currentUser.roles && currentUser.roles.includes("ROLE_TEACHER") && (
+            <tr>
+              <td><strong>Description:</strong></td>
+              <td>
+                <input
+                  type="text"
+                  name="description"
+                  value={profileData.description}
+                  onChange={handleInputChange}
+                />
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

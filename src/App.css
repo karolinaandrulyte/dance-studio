@@ -1,22 +1,36 @@
 .App {
+  background-color: #611e0a;
   text-align: center;
   min-height: auto; /* how far you can scroll depends on the content */
+  flex-grow: 1; /* This makes the App component take up available space */
 }
 
 body {
+  background-color:#611e0a;
+  color:  #f5f5dc;
   text-align: center;
   font-family: Arial;
   margin: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Full height of the viewport */
 }
 
 .header {
 padding: 5px;
 text-align: center;
-background-color: #333333;
-color: white;
+color:#D3A34D;
 font-size: 20px;
+}
+
+footer {
+  color:#D3A34D;
+  text-align: center; /* Center-align text */
+  padding: 5px 0; /* Space inside the footer */
+  font-size: 12px; /* Slightly smaller font size */
+  bottom: 0; /* Sticks to the bottom */
+  position: relative; /* Position relative for content pages */
+  width: 100%; /* Stretches footer across the screen */
 }
 
 nav ul {
@@ -30,67 +44,117 @@ nav ul li {
   margin-right: 20px;
 }
 
+nav ul li a {
+  color: #D3A34D; /* Pale gold for links */
+  text-decoration: none; /* No underline for links */
+  padding: 5px 10px; /* Add some padding for buttons */
+  border: 2px solid transparent; /* Transparent border for hover effect */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s, background-color 0.3s; /* Smooth transition for border and background color */
+}
+
+nav ul li a:hover {
+  border-color: #D3A34D; /* Border color on hover */
+  background-color: rgba(211, 162, 77, 0.2); /* Light background on hover */
+}
+
+nav ul li a:visited {
+  color: #D3A34D; /* Keep the same color for visited links */
+}
+
 table {
   width: auto; /* Set width based on content */
   max-width: 100%; /* Limit width to container */
   margin: 20px auto; /* Center the table with some margin */
-  border-collapse: collapse;
-  border: 1px solid #ccc; /* Light border around the table */
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+  font-family: Arial, sans-serif; /* Font for the table */
+  font-size: 14px; /* Font size for table text */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensure the rounded corners are respected */
 }
 
 th, td {
-  border: 1px solid #ccc; /* Border for cells */
+  border: 1px solid rgba(211, 162, 77, 0.3); /* Use a lighter border color for a subtle effect */
   padding: 10px 15px; /* Padding inside cells */
   text-align: left; /* Align text to the left */
+  transition: background-color 0.3s; /* Smooth background transition on hover */
 }
 
 th {
-  background-color: #f4f4f4; /* Light gray background for header */
+  background-color: #D3A34D; /* Pale gold for header background */
+  color: #611e0a; /* Dark color for header text */
   font-weight: bold; /* Make header text bold */
 }
 
 td {
-  background-color: #fff; /* White background for table rows */
+  background-color: rgba(255, 255, 255, 0.1); /* Light transparent background for table rows */
+  color: #f5f5dc; /* Text color for table rows */
+}
+
+tr:hover td {
+  background-color: rgba(211, 162, 77, 0.2); /* Light background on row hover */
 }
 
 caption {
   margin-bottom: 10px; /* Space between table and caption */
-  font-size: 16px;
-  font-weight: bold;
-  color: #333; /* Darker color for caption */
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-footer {
-  background-color: #333333; /* Dark background for contrast */
-  color: white; /* Text color for contrast */
-  text-align: center; /* Center-align text */
-  padding: 5px 0; /* Space inside the footer */
-  font-size: 12px; /* Slightly smaller font size */
-  bottom: 0; /* Sticks to the bottom */
-  width: 100%; /* Stretches footer across the screen */
+  font-size: 16px; /* Caption font size */
+  font-weight: bold; /* Bold caption */
+  color: #D3A34D; /* Match caption color to header */
 }
 
 .home-container {
-  max-width: 800px; /* Limit width */
-  margin: 0 auto; /* Center container */
-  padding: 0px; /* Padding inside the container */
-  text-align: center; /* Center text */
-  overflow: hidden; /* Prevent overflow */
+  min-height: calc(100vh - 100px); /* Adjust based on header and footer height */
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers the content vertically */
+  background-image: url('C:/REACT/dance-studio/src/pages/generated-dancing-image.png'); /* Path to the image */
+  background-size: cover; /* Ensures the image covers the whole section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents image repetition */
+  position: relative;
+  z-index: 1;
 }
 
-.home-container ul {
-  list-style-type: none; /* Remove bullet points */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+.home-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text readability */
+  z-index: 1; /* Ensures the overlay is on top of the image */
 }
 
-.home-container li {
-  margin: 10px 0; /* Space between list items */
+.home-container h1, .home-container p, .home-container ul {
+  position: relative; /* Ensures the text is above the overlay */
+  z-index: 2;
+  color: #f5f5dc; /* Makes the text stand out against the dark background */
+}
+
+.home-container ul li {
+  margin: 10px 0;
   padding: 0px;
+  list-style: none;
+}
+
+.App-link {
+  color: #D3A34D; /* Pale gold for links */
+  text-decoration: none; /* No underline for links */
+  padding: 5px 10px; /* Add some padding for buttons */
+  border: 2px solid transparent; /* Transparent border for hover effect */
+  border-radius: 5px; /* Rounded corners */
+  transition: border-color 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+.App-link:hover {
+  border-color: #D3A34D; /* Border color on hover */
+  background-color: rgba(211, 162, 77, 0.2); /* Light background on hover */
+}
+
+.App-link:visited {
+  color: #D3A34D; /* Keep the same color for visited links */
 }

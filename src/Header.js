@@ -4,7 +4,7 @@ function Header() {
 
     return (
 
-<div class="header">
+<div className="header">
       <h1>Welcome to Dance Studio</h1>
       <p>Latin dance studio</p>
     </div>

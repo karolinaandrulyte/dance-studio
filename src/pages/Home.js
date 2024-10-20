@@ -21,7 +21,9 @@ const Home = () => {
         Discover the joy of dance, meet like-minded individuals, and enhance your skills in a supportive and engaging community.
      </p>
 
-     <p><Link to="/signup">Sign up here!</Link> </p>
+     <div>
+      <p><Link to="/signup" className="App-link">Sign up here!</Link></p>
+    </div>
       
   </div>
   )
