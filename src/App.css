@@ -158,3 +158,97 @@ caption {
 .App-link:visited {
   color: #D3A34D; /* Keep the same color for visited links */
 }
+
+/* Form Container */
+.card-container {
+  background-color: rgba(97, 30, 10, 0.9); /* Dark red with transparency */
+  padding: 30px;
+  max-width: 400px;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  align-items: center;
+}
+
+/* General Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(211, 162, 77, 0.5); /* Pale gold */
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+  color: #f5f5dc;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensure padding is included in width */
+  margin: 0 auto;
+}
+
+.form-control:focus {
+  border-color: #D3A34D; /* Pale gold on focus */
+  outline: none;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #D3A34D; /* Pale gold */
+  font-weight: bold;
+}
+
+.btn {
+  width: 100%; /* Make button full width */
+  background-color: #D3A34D; /* Pale gold */
+  color: #611e0a; /* Dark red text */
+  border: none;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.btn:hover {
+  background-color: rgba(211, 162, 77, 0.8); /* Darker gold on hover */
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Alert Messages */
+.alert {
+  margin-top: 10px;
+}
+
+/* Contact Form Specific Styles */
+/* Contact Form Container */
+.contact-container {
+  background-color: rgba(97, 30, 10, 0.9); /* Dark red with transparency */
+  padding: 30px; /* Match padding of other forms */
+  max-width: 400px; /* Match max-width of other forms */
+  margin: 50px auto; /* Center with margin */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+  text-align: center; /* Center the text */
+}
+
+/* Form Header */
+.contact-container h3 {
+  color: #D3A34D; /* Pale gold */
+  margin-bottom: 10px;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 20px; /* Space above contact info */
+  color: #f5f5dc; /* Match text color */
+}

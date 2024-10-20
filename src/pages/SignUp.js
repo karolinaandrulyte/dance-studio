@@ -127,7 +127,7 @@ const SignUp = () => {
     return (
       <div className="col-md-12">
       <div className="card card-container">
-      <h2>Sign up form for teachers and students:</h2>
+      <h2>Sign up by filling the form below:</h2>
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>

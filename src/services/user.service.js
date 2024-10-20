@@ -72,6 +72,10 @@ const updateProfile = (profileData) => {
   });
 };
 
+const getUserById = (id) => {
+  return axios.get(`http://localhost:8080/api/users/${id}`, { headers: authHeader() });
+};
+
 const UserService = {
   getPublicContent,
   getStudentBoard,
@@ -85,6 +89,7 @@ const UserService = {
   deleteUser, 
   updateUser, 
   updateProfile,
+  getUserById,
 };
 
 export default UserService;

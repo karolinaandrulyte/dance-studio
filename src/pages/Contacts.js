@@ -39,39 +39,42 @@ const Contacts = () => {
     
     <h3>Contact Form</h3>
     <form onSubmit={handleSubmit}>
-      <div>
+    <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input
           type="text"
           id="name"
           name="name"
+          className="form-control" // Apply form-control class
           value={formData.name}
           onChange={handleInputChange}
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
           name="email"
+          className="form-control" // Apply form-control class
           value={formData.email}
           onChange={handleInputChange}
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="message">Message:</label>
         <textarea
           id="message"
           name="message"
+          className="form-control" // Apply form-control class
           value={formData.message}
           onChange={handleInputChange}
           required
         ></textarea>
       </div>
-      <button type="submit">Send Message</button>
+      <button type="submit" className="btn">Send Message</button>
     </form>
 
     <div className="contact-info">

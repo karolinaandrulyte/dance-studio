@@ -20,7 +20,7 @@ const BoardTeacher = () => {
         console.error("Error fetching assigned students:", error);
       }
     );
-  }, [teacherId]);// Include teacherId as a dependency
+  }, [teacherId]);
 
   useEffect(() => {
     UserService.getTeacherBoard().then(
@@ -42,7 +42,7 @@ const BoardTeacher = () => {
 // Fetch the list of students (unassigned)
 UserService.getStudents().then(
   (response) => {
-    console.log("Fetched students:", response.data); // Add this log to check
+    console.log("Fetched students:", response.data); 
     setStudents(response.data);
   },
   (error) => {
@@ -51,7 +51,7 @@ UserService.getStudents().then(
 );
 
 fetchAssignedStudents(); // Fetch assigned students on component mount
-}, [fetchAssignedStudents]); // Include fetchAssignedStudents here
+}, [fetchAssignedStudents]);
 
 const assignStudent = (studentId) => {
   UserService.assignStudent(studentId, teacherId).then(
@@ -109,9 +109,11 @@ const assignStudent = (studentId) => {
                   <td>{student.lastName}</td>
                   <td>{student.email}</td>
                   <td>
-                    <button onClick={() => assignStudent(student.id)}>
-                      Assign Student
-                    </button>
+                  <button
+                      onClick={() => assignStudent(student.id)}
+                      className="btn" 
+                    >Assign student
+                  </button>
                   </td>
                 </tr>
               ))}
@@ -133,7 +135,7 @@ const assignStudent = (studentId) => {
                 <th>Username</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Actions</th> {/* Add a column for actions */}
+                <th>Actions</th> 
               </tr>
             </thead>
             <tbody>
@@ -145,10 +147,9 @@ const assignStudent = (studentId) => {
                   <td>{student.lastName}</td>
                   <td>
                     <button
-                      onClick={() => handleUnassign(student.id)} // Unassign button
+                      onClick={() => handleUnassign(student.id)}
                       className="btn btn-warning"
-                    >
-                      Unassign
+                    >Unassign
                     </button>
                   </td>
                 </tr>

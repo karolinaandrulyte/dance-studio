@@ -73,7 +73,7 @@ const LogIn = () => {
   return (
       <div className="col-md-12"> {/*Bootstrap class for full-width column on medium+ screens*/}
         <div className="card card-container"> {/*Styling container for a form, used for UI layout*/}
-        <h2>Login for teachers and students:</h2>
+        <h2>Log in here:</h2>
           <Form onSubmit={handleLogin} ref={form}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
