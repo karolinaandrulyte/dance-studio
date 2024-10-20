@@ -10,7 +10,7 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Contacts from "./pages/Contacts";
 import NoPage from "./pages/NoPage";
-import BoardAdmin from './pages/BoardAdmin'; // Importing your board components
+import BoardAdmin from './pages/BoardAdmin'; 
 import BoardStudent from './pages/BoardStudent';
 import BoardTeacher from './pages/BoardTeacher';
 import Profile from './pages/Profile';

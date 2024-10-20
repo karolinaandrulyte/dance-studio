@@ -13,7 +13,6 @@ const UpdateUser = () => {
     email: "",
     firstName: "",
     lastName: "",
-    // Add other fields as necessary
   });
 
   useEffect(() => {

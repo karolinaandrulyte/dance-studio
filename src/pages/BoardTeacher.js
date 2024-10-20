@@ -4,11 +4,11 @@ import AuthService from "../services/auth.service";
 
 const BoardTeacher = () => {
   const [content, setContent] = useState("");
-  const [students, setStudents] = useState([]); // State to store list of students
-  const [assignedStudents, setAssignedStudents] = useState([]); // List of assigned students
+  const [students, setStudents] = useState([]); 
+  const [assignedStudents, setAssignedStudents] = useState([]); 
   
-  const currentUser = AuthService.getCurrentUser(); // Assuming the current user is a teacher
-  const teacherId = currentUser.id; // Get the teacher's ID from logged-in user data
+  const currentUser = AuthService.getCurrentUser(); 
+  const teacherId = currentUser.id; 
 
   const fetchAssignedStudents = useCallback(() => {
     UserService.getAssignedStudents(teacherId).then(
@@ -124,7 +124,6 @@ const assignStudent = (studentId) => {
         )}
       </div>
 
-      {/* Assigned Students Table */}
       <div className="assigned-students-list">
         <h4>My Students</h4>
         {assignedStudents.length > 0 ? (

@@ -58,7 +58,7 @@ const handleDelete = (id) => {
 
 const handleUpdate = (id) => {
   console.log("Update user with ID:", id);
-  navigate(`/admin/update/${id}`); // Make sure this matches the route path in App.js
+  navigate(`/admin/update/${id}`); 
 };
 
   return (

@@ -36,7 +36,7 @@ const register = (signupData) => {
   };
 
   const updateCurrentUser = (user) => {
-    localStorage.setItem("user", JSON.stringify(user)); // Assuming you're storing the user in local storage
+    localStorage.setItem("user", JSON.stringify(user)); 
   };
 
   const AuthService = {

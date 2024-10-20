@@ -19,7 +19,6 @@ const Contacts = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     alert(`Message sent from ${formData.name}!`);
     setFormData({
       name: '',
@@ -45,7 +44,7 @@ const Contacts = () => {
           type="text"
           id="name"
           name="name"
-          className="form-control" // Apply form-control class
+          className="form-control" 
           value={formData.name}
           onChange={handleInputChange}
           required
@@ -57,7 +56,7 @@ const Contacts = () => {
           type="email"
           id="email"
           name="email"
-          className="form-control" // Apply form-control class
+          className="form-control" 
           value={formData.email}
           onChange={handleInputChange}
           required
@@ -68,7 +67,7 @@ const Contacts = () => {
         <textarea
           id="message"
           name="message"
-          className="form-control" // Apply form-control class
+          className="form-control" 
           value={formData.message}
           onChange={handleInputChange}
           required

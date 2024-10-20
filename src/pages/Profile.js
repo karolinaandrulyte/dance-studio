@@ -53,7 +53,6 @@ const Profile = () => {
 
         // Optionally update the current user in local storage
         AuthService.updateCurrentUser({ ...currentUser, danceStyle, description });
-        // Also update the local state
         setCurrentUser({ ...currentUser, danceStyle, description });
         })
         .catch((error) => {
@@ -77,30 +76,30 @@ const Profile = () => {
         <tbody>
           <tr>
             <td><strong>First Name:</strong></td>
-            <td>{profileData.firstName}</td>  {/* Use profileData, fetched from API */}
+            <td>{profileData.firstName}</td>  
           </tr>
           <tr>
             <td><strong>Last Name:</strong></td>
-            <td>{profileData.lastName}</td>  {/* Use profileData, fetched from API */}
+            <td>{profileData.lastName}</td>  
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td>{profileData.email}</td>  {/* Use profileData, fetched from API */}
+            <td>{profileData.email}</td>  
           </tr>
           <tr>
             <td><strong>Roles:</strong></td>
-            <td>{currentUser.roles.join(', ')}</td> {/* Display user roles */}
+            <td>{currentUser.roles.join(', ')}</td> 
           </tr>
 
           {currentUser.roles && currentUser.roles.includes("ROLE_TEACHER") && (
             <>
               <tr>
                 <td><strong>Dance Style:</strong></td>
-                <td>{profileData.danceStyle}</td>  {/* Use profileData from fetched API */}
+                <td>{profileData.danceStyle}</td>  
               </tr>
               <tr>
                 <td><strong>Description:</strong></td>
-                <td>{profileData.description}</td>  {/* Use profileData from fetched API */}
+                <td>{profileData.description}</td>  
               </tr>
               <tr>
                 <td><strong>Edit Dance Style:</strong></td>
