@@ -1,26 +1,17 @@
-# Dance Studio Management System
+# Dance Studio Management System (frontend)
 
 ## Overview
 
-The Dance Studio Management System is a web application designed to facilitate the management of dance studio operations, including user registration, trainer schedules, and student-teacher assignments. This application supports multiple user roles, including Admin, Teacher, and Student.
-
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Available Scripts](#scripts)
+This is the frontend for the Dance Studio management system, built using React. It is a web application designed to facilitate the management of dance studio operations. It provides a user-friendly interface for user registration, teacher profile management, student assignment to teachers and relevant information for students. This application supports multiple user roles, including Admin, Teacher, and Student.
 
 ## Features
 
-- User Registration and Authentication
-- Role-based Access Control (Admin, Teacher, Student)
-- Teacher Profile Management
-- Student Assignments to Teachers
-- View Trainer Schedules
-- Responsive UI with modern design
+- **User-Friendly Interface**: Built with React, providing an intuitive and responsive UI with modern design.
+- **User Registration and Authentication**
+- **Role-Based Access Control and Navigation**: Users are directed to different dashboards based on their roles (Student, Teacher, Admin).
+- **Profile Management**: all users can view and teacher users can update their profiles easily.
+- **RESTful API Integration**: Communicates with the backend using RESTful APIs for data management.
+- **Student Assignment to Teachers**
 
 ## Technologies Used
 
@@ -33,45 +24,63 @@ The Dance Studio Management System is a web application designed to facilitate t
 
 ## Installation
 
-1. Clone the repository:
+To install and run the frontend of the project locally, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- **Node.js (v14 or higher)**: Download and install Node.js from [Node.js official page](https://nodejs.org/).
+- **npm (Node Package Manager)**: Comes bundled with Node.js, used for managing dependencies.
+
+Clone the repository:
+First, clone the repository to your local machine using Git:
 ```bash
    git clone https://github.com/karolinaandrulyte/dance-studio.git
    cd dance-studio-management
+```
 
-2. Set up the backend:
-Navigate to the backend directory.
-Install the required dependencies and build the project using Maven or Gradle.
-Set up the MySQL database and update the application properties with the database credentials.
-
-3. Set up the frontend:
-Navigate to the frontend directory.
-Install the required dependencies:
+Navigate to the frontend directory and install the required dependencies:
 ```bash
    npm install
+```
 
-4. Start the backend server:
-```bash
-   ./mvnw spring-boot:run
+After installing the dependencies, you can start the application using:
 
-5. Start the frontend application:
 ```bash
    npm start
+```
 
 ## Usage
 Access the application at http://localhost:3000.
 
-- **Sign Up**: Users can sign up by filling out the registration form with their username, email, first name, last name, and password. They can also choose to register as a Teacher.
+- **Sign Up**: Navigate to the signup page and fill in the required fields to create a new user account. You can choose to register as either a student or a teacher.
 
-- **Login**: After signing up, users can log in to access their profiles. The application supports different roles, and users will be directed to their respective dashboards based on their roles.
+Example Request:
+`{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "firstName": "John",
+  "lastName": "Doe",
+  "password": "securePassword123",
+  "isTeacher": true
+}`
+
+- **Login**: After signing up, users can log in to access their profiles. The application supports different roles, and users will be able to access respective dashboards based on their roles.
+
+`{
+  "username": "john_doe",
+  "password": "securePassword123"
+}`
 
 - **Profiles**: 
-  - **Students**: Students can view their teachers along with their dance styles and schedules in the Student Board.
-  - **Teachers**: Teachers can manage their profiles, including updating their dance styles and descriptions. They can also view the students assigned to them in their Teacher Board.
+  - **Students** and **Admins**: in their profile page they can see information, including username, first name, last name, email and role
+  - **Teachers**: in their profile page they can see the same details as students, including seeing and updating their dance style and description.
 
-- **Role-Based Access**: The application implements role-based access control, allowing different functionalities based on user roles:
-  - **Students**: Can view teacher schedules and profiles.
-  - **Teachers**: Can manage their profiles and assign/unassign students.
-  - **Admins**: Can manage all users and their roles.
+- **Role-Based Board Access**: The application implements role-based access control, allowing different functionalities based on user roles:
+  - **Students**: can access Student Board with the list of available teachers along with their dance style and description.
+  - **Teachers**: can access Teacher Board with a list of student users and assign/unassign students to their custom students table.
+  - **Admins**: can access Admin Board where they can view, update and delete users.
 
 - **Error Handling**: The application provides appropriate feedback for actions like successful registration, login failures, and other operations to enhance user experience.
 
@@ -106,10 +115,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 Launches the test runner in interactive watch mode.  
 See the section about [running tests](https://create-react-app.dev/docs/running-tests/) for more information.
-
-### `npm run eject`
-
-**Note: This is a one-way operation.**  
-If you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
-
-For more information, you can refer to the [Create React App documentation](https://create-react-app.dev/docs/getting-started/).
