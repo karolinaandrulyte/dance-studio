@@ -37,7 +37,6 @@ Clone the repository:
 First, clone the repository to your local machine using Git:
 ```bash
    git clone https://github.com/karolinaandrulyte/dance-studio.git
-   cd dance-studio-management
 ```
 
 Navigate to the frontend directory and install the required dependencies:
@@ -115,3 +114,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 Launches the test runner in interactive watch mode.  
 See the section about [running tests](https://create-react-app.dev/docs/running-tests/) for more information.
+
+## Contact Information
+- Karolina Andrulyte
+- karolina.andrulyte@gmail.com
+- https://github.com/karolinaandrulyte/51_DanceStudio
